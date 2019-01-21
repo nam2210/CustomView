@@ -7,12 +7,14 @@ import android.graphics.Paint;
 import android.support.v4.content.ContextCompat;
 import android.text.TextPaint;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 
 /**
  * Created by nampham on 1/21/19.
  */
 public class TimerView extends View {
+    private static final String TAG = TimerView.class.getSimpleName();
 
     private Paint backgroudPaint;
     private TextPaint textPaint;
@@ -61,6 +63,38 @@ public class TimerView extends View {
             updateTimer();
         }
     };
+
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        int modeW = MeasureSpec.getMode(widthMeasureSpec);
+        int modeH = MeasureSpec.getMode(heightMeasureSpec);
+        if (modeW == MeasureSpec.EXACTLY){
+            Log.e(TAG, "modeW EXACTLY");
+
+        }
+
+        if (modeW == MeasureSpec.AT_MOST){
+            Log.e(TAG, "modeW AT_MOST");
+        }
+
+        if (modeW == MeasureSpec.UNSPECIFIED){
+            Log.e(TAG, "modeW UNSPECIFIED");
+        }
+
+        if (modeH == MeasureSpec.EXACTLY){
+            Log.e(TAG, "modeH EXACTLY");
+        }
+
+        if (modeH == MeasureSpec.AT_MOST){
+            Log.e(TAG, "modeH AT_MOST");
+        }
+
+        if (modeH == MeasureSpec.UNSPECIFIED){
+            Log.e(TAG, "modeH UNSPECIFIED");
+        }
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+
+    }
 
     @Override
     protected void onDraw(Canvas canvas) {
