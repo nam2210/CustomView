@@ -16,6 +16,8 @@ import android.view.View;
 public class TimerView extends View {
     private static final String TAG = TimerView.class.getSimpleName();
 
+    private static final long MAX_VALUE = 99999;
+
     private Paint backgroudPaint;
     private TextPaint textPaint;
 
@@ -64,36 +66,38 @@ public class TimerView extends View {
         }
     };
 
+    //định ra cái view đó sẽ có chiều dài chiều rộng như thế nào
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        int modeW = MeasureSpec.getMode(widthMeasureSpec);
-        int modeH = MeasureSpec.getMode(heightMeasureSpec);
-        if (modeW == MeasureSpec.EXACTLY){
-            Log.e(TAG, "modeW EXACTLY");
+        Paint.FontMetrics fontMetrics = textPaint.getFontMetrics();
+        int maxTextWidth = (int) Math.ceil(textPaint.measureText(String.valueOf(MAX_VALUE)));
+        int maxTextHeight = (int) Math.ceil(-fontMetrics.top + fontMetrics.bottom);
 
+        //add padding
+        int contentWidth = maxTextWidth + getPaddingLeft() + getPaddingRight();
+        int contentHeight = maxTextHeight + getPaddingBottom() + getPaddingTop();
+
+        int contentSize = Math.max(contentWidth, contentHeight);
+
+
+        int mode = MeasureSpec.getMode(widthMeasureSpec);
+        switch (mode){
+            case MeasureSpec.AT_MOST:
+                Log.e(TAG, "++++++++++++++++++++");
+                break;
+            case MeasureSpec.EXACTLY:
+                Log.e(TAG, "EXACTLY");
+                break;
+            case MeasureSpec.UNSPECIFIED:
+                Log.e(TAG, "UNSPECIFIED");
+                break;
         }
 
-        if (modeW == MeasureSpec.AT_MOST){
-            Log.e(TAG, "modeW AT_MOST");
-        }
-
-        if (modeW == MeasureSpec.UNSPECIFIED){
-            Log.e(TAG, "modeW UNSPECIFIED");
-        }
-
-        if (modeH == MeasureSpec.EXACTLY){
-            Log.e(TAG, "modeH EXACTLY");
-        }
-
-        if (modeH == MeasureSpec.AT_MOST){
-            Log.e(TAG, "modeH AT_MOST");
-        }
-
-        if (modeH == MeasureSpec.UNSPECIFIED){
-            Log.e(TAG, "modeH UNSPECIFIED");
-        }
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-
+        //tính toán size của view chọn content size hay là chọn size tối đa của parent
+        int measuredWidth = resolveSize(contentSize, widthMeasureSpec);
+        int measuredHeight = resolveSize(contentSize, heightMeasureSpec);
+        Log.e(TAG, String.valueOf(measuredWidth));
+        setMeasuredDimension(measuredWidth, measuredHeight);
     }
 
     @Override
@@ -106,7 +110,8 @@ public class TimerView extends View {
 
         float radius = (canvasWidth < canvasHeight ? canvasWidth : canvasHeight) *  0.5f;
 
-        String number = String.valueOf((long)((System.currentTimeMillis() - startTime) * 0.001));
+        long seconds = MAX_VALUE; //(long)((System.currentTimeMillis() - startTime) * 0.001)
+        String number = String.valueOf(seconds);
         float textOffsetX = textPaint.measureText(number) * 0.5f;
         float textOffsetY = textPaint.getFontMetrics().ascent * -0.4f;
 

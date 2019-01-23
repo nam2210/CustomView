@@ -20,78 +20,80 @@
                 android:id="@+id/timerView"
                 android:layout_width="200dp"
                 android:layout_height="200dp"
-                android:layout_gravity="center"/>
+                android:layout_gravity="center" />
         </FrameLayout>
 
         <TextView
-            android:layout_marginTop="12dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/pattern_1"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            android:layout_marginTop="12dp"
+            android:text="@string/pattern_1" />
 
         <FrameLayout
-            android:layout_marginTop="12dp"
             android:layout_width="300dp"
             android:layout_height="300dp"
             android:layout_gravity="center"
+            android:layout_marginTop="12dp"
             android:background="@drawable/background">
 
             <com.hnam.customview.TimerView
                 android:id="@+id/timerView1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_gravity="center"/>
+                android:layout_gravity="center" />
         </FrameLayout>
 
         <TextView
-            android:layout_marginTop="12dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/pattern_1"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            android:layout_marginTop="12dp"
+            android:text="@string/pattern_1" />
 
         <FrameLayout
-            android:layout_marginTop="12dp"
             android:layout_width="300dp"
             android:layout_height="300dp"
             android:layout_gravity="center"
+            android:layout_marginTop="12dp"
             android:background="@drawable/background">
 
             <com.hnam.customview.TimerView
                 android:id="@+id/timerView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"/>
+                android:padding="24dp"
+                android:layout_gravity="center" />
         </FrameLayout>
 
         <TextView
-            android:layout_marginTop="12dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/pattern_1"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            android:layout_marginTop="12dp"
+            android:text="@string/pattern_1" />
 
         <FrameLayout
-            android:layout_marginTop="12dp"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginTop="12dp"
             android:background="@drawable/background">
 
             <com.hnam.customview.TimerView
                 android:id="@+id/timerView3"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_gravity="center"/>
+                android:padding="24dp"
+                android:layout_gravity="center" />
         </FrameLayout>
 
         <TextView
-            android:layout_marginTop="12dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/pattern_2"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            android:layout_marginTop="12dp"
+            android:text="@string/pattern_2" />
 
 
     </LinearLayout>

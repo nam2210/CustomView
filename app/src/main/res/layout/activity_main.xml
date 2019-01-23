@@ -6,9 +6,9 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <com.hnam.customview.TimerView
-        android:id="@+id/timerView"
+    <include layout="@layout/custom_list_item"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="wrap_content" />
+
 
 </android.support.constraint.ConstraintLayout>
